@@ -1,0 +1,135 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title mb-4">Signup Form</h5>
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="row g-3">
+        
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('name')!.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('name')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('email')!.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('email')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-6">
+          <label for="address" class="form-label">Address</label>
+          <input type="textarea" class="form-control" id="address" formControlName="address">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('address')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('phone')!.invalid && (signupForm.get('phone')?.dirty || signupForm.get('phone')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('phone')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-4">
+          <label for="dobMonth" class="form-label">Date of Birth (Month)</label>
+          <select class="form-select" id="dobMonth" formControlName="dobMonth">
+            <!-- Options for month -->
+          </select>
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('dobMonth')!.invalid && (signupForm.get('dobMonth')?.dirty || signupForm.get('dobMonth')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('dobMonth')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-4">
+          <label for="dobDay" class="form-label">Day</label>
+          <input type="text" class="form-control" id="dobDay" formControlName="dobDay">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('dobDay')!.invalid && (signupForm.get('dobDay')?.dirty || signupForm.get('dobDay')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('dobDay')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-4">
+          <label for="dobYear" class="form-label">Year</label>
+          <input type="text" class="form-control" id="dobYear" formControlName="dobYear">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('dobYear')!.invalid && (signupForm.get('dobYear')?.dirty || signupForm.get('dobYear')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('dobYear')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-6">
+          <label class="form-label d-block">Gender</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="male" value="male" formControlName="gender" checked="checked">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="female" value="female" formControlName="gender">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('gender')!.invalid && (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('gender')!.hasError('required')">
+                Required field</small>
+        </span>
+               
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('password')!.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('password')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-md-6">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('confirmPassword')!.invalid && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('confirmPassword')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-12">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="eligibility" formControlName="eligibility">
+            <label class="form-check-label" for="eligibility">Eligibility</label>
+          </div>
+        </div>
+        <span style="color: red;" *ngIf="signupForm.get('eligibility')!.invalid && (signupForm.get('eligibility')?.dirty || signupForm.get('eligibility')?.touched)" >
+            <small class="text-danger"
+            *ngIf="signupForm.get('eligibility')!.hasError('required')">
+                Required field</small>
+        </span>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  

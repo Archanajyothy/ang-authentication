@@ -1,0 +1,110 @@
+<div class="form-style-5">
+    <form [formGroup] = "signupForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
+        <fieldset>
+
+        <label for="job">Name</label>
+        <input type="text" name="id" formControlName="name" placeholder="Enter Name">
+            <span style="color: red;" *ngIf="signupForm.get('name')!.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('name')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="signupForm.get('name')!.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('name')!.hasError('maxlength')">
+                    Invalid ID</small>
+            </span>
+            
+
+        <label for="job">Email:</label>
+        <input type="email" name="email" formControlName="email" placeholder="Enter Email">
+            <span style="color: red;" *ngIf="signupForm.get('email')!.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('email')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="signupForm.get('email')!.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('email')!.hasError('email')">
+                    Enter valid email</small>
+            </span>
+        
+        <label for="job">Address:</label>
+        <input type="text" name="address" formControlName="address" placeholder="Enter Address">
+            <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('address')!.hasError('required')">
+                    Required field</small>
+            </span>
+        
+        <label for="job">Mob.no.:</label>
+        <input type="text" name="mob" formControlName="phone" placeholder="Enter Mobile No.">
+            <span style="color: red;" *ngIf="signupForm.get('phone')!.invalid && (signupForm.get('phone')?.dirty || signupForm.get('phone')?.touched)" >
+                <small class="text-danger"
+                *ngIf="signupForm.get('phone')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="signupForm.get('phone')?.invalid && (signupForm.get('phone')?.dirty || signupForm.get('phone')?.touched)" >
+                <small class="text-danger"
+                    *ngIf="signupForm.get('phone')?.hasError('pattern')">
+                    Only numbers allowed.
+                </small>
+                <br>
+            </span>
+            <span style="color: red;" *ngIf="signupForm.get('phone')?.invalid && (signupForm.get('phone')?.dirty || signupForm.get('phone')?.touched)" >
+                <small class="text-danger"
+                    *ngIf="signupForm.get('phone')?.hasError('minlength')">
+                    10 digits required.
+                </small>
+            </span>
+            <span style="color: red;" *ngIf="signupForm.get('phone')?.invalid && (signupForm.get('phone')?.dirty || signupForm.get('phone')?.touched)" >
+                <small class="text-danger"
+                    *ngIf="signupForm.get('phone')?.hasError('maxlength')">
+                    Morethan 10 digits.
+                </small>
+            </span>
+
+            <label for="job">DOB:</label>
+            <input type="text" name="address" formControlName="dobDay" placeholder="Enter Address">
+                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('address')!.hasError('required')">
+                        Required field</small>
+                </span>
+
+            <label for="job">Year:</label>
+            <input type="text" name="address" formControlName="dobYear" placeholder="Enter Address">
+                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('address')!.hasError('required')">
+                        Required field</small>
+                </span>
+
+            <label for="job">Password:</label>
+            <input type="text" name="address" formControlName="password" placeholder="Enter Address">
+                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('address')!.hasError('required')">
+                        Required field</small>
+                </span>
+
+            <label for="job">Confirm password:</label>
+            <input type="text" name="address" formControlName="confirmPassword" placeholder="Enter Address">
+                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('address')!.hasError('required')">
+                        Required field</small>
+                </span>
+
+            <label for="job">Eligibility:</label>
+            <input type="checkbox" name="address" formControlName="eligibility" placeholder="Enter Address">
+                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('address')!.hasError('required')">
+                        Required field</small>
+                </span>
+    
+        </fieldset>
+        <button class="btn" [disabled] = "!signupForm.valid" >Submit</button>
+    </form>
+</div>
