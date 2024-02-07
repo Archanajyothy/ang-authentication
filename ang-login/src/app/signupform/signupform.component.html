@@ -1,5 +1,5 @@
 <div class="form-style-5">
-    <form [formGroup] = "signupForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
+    <form [formGroup] = "signupForm" (ngSubmit) = "$event.preventDefault(); submitForm($event)">
         <fieldset>
 
         <label for="job">Name</label>
@@ -30,7 +30,7 @@
             </span>
         
         <label for="job">Address:</label>
-        <input type="text" name="address" formControlName="address" placeholder="Enter Address">
+        <input type="textarea" name="address" formControlName="address" placeholder="Enter Address">
             <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
                 <small class="text-danger"
                 *ngIf="signupForm.get('address')!.hasError('required')">
@@ -63,44 +63,99 @@
                     Morethan 10 digits.
                 </small>
             </span>
+                       <!-- date of birth field -->
+            <div>
+                <div class="col-md-4">
+                    
+                    <label for="dobMonth" class="form-label">DOB:  (Month)</label>
+                    <select class="form-select" id="dobMonth" formControlName="dobMonth">
+                    <option value="">Month</option>
+                      <option value="{{this.month}}" *ngFor="let month of months">{{this.month}}</option>
+                    </select>
+                </div>
+                  
+                  <span style="color: red;" *ngIf="signupForm.get('dobMonth')!.invalid && (signupForm.get('dobMonth')?.dirty || signupForm.get('dobMonth')?.touched)" >
+                      <small class="text-danger"
+                      *ngIf="signupForm.get('dobMonth')!.hasError('required')">
+                          Required field</small>
+                  </span>
+                  
+                  <div class="dob" style="display: flex; flex-direction: row; justify-content: flex-start;">
+                    <div class="col-md-4">
+                        <label for="dobDay" class="form-label">Day</label>
+                        <input type="text" class="form-control" id="dobDay" formControlName="dobDay" placeholder="Day">
+                    </div>
+                    <span style="color: red;" *ngIf="signupForm.get('dobDay')!.invalid && (signupForm.get('dobDay')?.dirty || signupForm.get('dobDay')?.touched)" >
+                        <small class="text-danger"
+                        *ngIf="signupForm.get('dobDay')!.hasError('required')">
+                            Required field</small>
+                    </span>
+                    
+                    <div class="col-md-4">
+                    <label for="dobYear" class="form-label">Year</label>
+                    <input type="text" class="form-control" id="dobYear" formControlName="dobYear" placeholder="Year">
+                    </div>
+                    <span style="color: red;" *ngIf="signupForm.get('dobYear')!.invalid && (signupForm.get('dobYear')?.dirty || signupForm.get('dobYear')?.touched)" >
+                        <small class="text-danger"
+                        *ngIf="signupForm.get('dobYear')!.hasError('required')">
+                            Required field</small>
+                    </span>
+                </div>
+            </div>
+                        <!-- dob field ends here -->
+                        
+            <div class="col-md-6">
+                <label class="form-label d-block">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="male" value="male" formControlName="gender" checked="checked">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="female" value="female" formControlName="gender">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
 
-            <label for="job">DOB:</label>
-            <input type="text" name="address" formControlName="dobDay" placeholder="Enter Address">
-                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+                <span style="color: red;" *ngIf="signupForm.get('gender')!.invalid && (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)" >
                     <small class="text-danger"
-                    *ngIf="signupForm.get('address')!.hasError('required')">
+                    *ngIf="signupForm.get('gender')!.hasError('required')">
                         Required field</small>
                 </span>
-
-            <label for="job">Year:</label>
-            <input type="text" name="address" formControlName="dobYear" placeholder="Enter Address">
-                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
-                    <small class="text-danger"
-                    *ngIf="signupForm.get('address')!.hasError('required')">
-                        Required field</small>
-                </span>
+            </div>
 
             <label for="job">Password:</label>
-            <input type="text" name="address" formControlName="password" placeholder="Enter Address">
+            <input type="password" name="address" formControlName="password" placeholder="Enter Password">
                 <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
                     <small class="text-danger"
                     *ngIf="signupForm.get('address')!.hasError('required')">
                         Required field</small>
+                </span>
+                <span>
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('password')!.hasError('maxlength')">
+                        Exceeding the limit.</small>
+                </span>
+                <span style="color: red;" *ngIf="signupForm.get('password')!.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)" >
+                    <small class="text-danger"
+                    *ngIf="signupForm.get('password')!.hasError('minlength')">
+                        Minimum 8 characters required.</small>
                 </span>
 
             <label for="job">Confirm password:</label>
-            <input type="text" name="address" formControlName="confirmPassword" placeholder="Enter Address">
-                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
-                    <small class="text-danger"
-                    *ngIf="signupForm.get('address')!.hasError('required')">
-                        Required field</small>
-                </span>
+            <input type="password" name="cpassword" formControlName="confirmPassword" placeholder="Confirm Password">
+                <!-- <div *ngIf="this.validPassword">
+                    Password mismatch 
+                </div>     -->
+                <span style="color: red;" *ngIf="!validPassword && signupForm.get('confirmPassword')?.dirty">
+                    <small class="text-danger">
+                        Password mismatch</small>
+                </span> 
+
 
             <label for="job">Eligibility:</label>
-            <input type="checkbox" name="address" formControlName="eligibility" placeholder="Enter Address">
-                <span style="color: red;" *ngIf="signupForm.get('address')!.invalid && (signupForm.get('address')?.dirty || signupForm.get('address')?.touched)" >
+            <input type="checkbox" name="address" formControlName="eligibility">
+                <span style="color: red;" *ngIf="signupForm.get('eligibility')!.invalid && (signupForm.get('eligibility')?.dirty || signupForm.get('eligibility')?.touched)" >
                     <small class="text-danger"
-                    *ngIf="signupForm.get('address')!.hasError('required')">
+                    *ngIf="signupForm.get('eligibility')!.hasError('required')">
                         Required field</small>
                 </span>
     

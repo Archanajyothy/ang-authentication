@@ -1,4 +1,49 @@
-<div class="container">
+<div class="form-style-5">
+  <form [formGroup] = "loginForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
+      <fieldset>
+        <label for="job">Email address</label>
+        <input type="text" name="id" formControlName="email" placeholder="Enter Email">
+            <span style="color: red;" *ngIf="loginForm.get('email')!.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" >
+                <small class="text-danger"
+                *ngIf="loginForm.get('email')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="loginForm.get('email')!.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" >
+              <small class="text-danger"
+              *ngIf="loginForm.get('email')!.hasError('email')">
+                  Enter a valid email id</small>
+            </span>
+
+        <label for="job">Password</label>
+        <input type="password" name="id" formControlName="password" placeholder="Enter Password">
+            <span style="color: red;" *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" >
+                <small class="text-danger"
+                *ngIf="loginForm.get('password')!.hasError('required')">
+                    Required field</small>
+            </span>
+            <span style="color: red;" *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" >
+              <small class="text-danger"
+              *ngIf="loginForm.get('password')!.hasError('maxlength')">
+                  Exceeding the limit.</small>
+            </span>
+            <span style="color: red;" *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" >
+              <small class="text-danger"
+              *ngIf="loginForm.get('password')!.hasError('minlength')">
+                  Minimum 8 characters required.</small>
+            </span>
+            <br>
+            <button class="btn"  [disabled] = "!loginForm.valid" >Login</button>
+      </fieldset>
+  </form>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container">
     <form class="mt-5">
         <div class="form-group ">
           <label for="exampleInputEmail1">Email address</label>
@@ -12,4 +57,4 @@
         
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-</div>
+</div> -->
