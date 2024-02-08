@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NotifierService } from '../services/notifier.service';
 
 @Component({
   selector: 'app-signupform',
@@ -7,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './signupform.component.css'
 })
 export class SignupformComponent {
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private toast : NotifierService) { }
 
   signupForm!: FormGroup;
   formData: any[] = []
@@ -38,10 +40,13 @@ export class SignupformComponent {
     if(this.signupForm.value.password !== this.signupForm.value.confirmPassword){
       this.validPassword = false;
       console.log(this.validPassword);
+      this.toast.showError('Invalid data.')
       event.preventDefault(); 
     } else {
       this.validPassword = true;
       localStorage.setItem('signupData',JSON.stringify(this.formData))
+      this.toast.showSuccess('Login using the credentials.', 'Successfully registered.')
+      this.router.navigate(['login'])
       console.log(this.formData);
       
     }

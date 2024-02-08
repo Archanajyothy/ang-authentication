@@ -9,8 +9,8 @@ export class NotifierService {
   
   constructor(private toast: ToastrService) { }
 
-  showSuccess(message:any){
-    this.toast.success(message,'',{easing: 'ease-in', easeTime: 1000})
+  showSuccess(title: any, message:any){
+    this.toast.success(title, message,{easing: 'ease-in', easeTime: 1000})
   }
 
   showError(message: any){

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from '../services/notifier.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent {
   loginData:any[] = [];
   loginObj: any;
 
-  constructor(private formBuilder: FormBuilder, private notify : NotifierService) { }
+  constructor(private formBuilder: FormBuilder, private notify : NotifierService,
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -33,7 +35,8 @@ export class LoginComponent {
     }
     
     if(this.loginData[this.loginData.length-1].email === this.loginObj.email && this.loginData[this.loginData.length-1].password === this.loginObj.password){
-      this.notify.showSuccess("Successfully logged in.")
+      this.notify.showSuccess('',"Successfully logged in.")
+      this.router.navigate(['home'])
     }else{
       this.notify.showError("Incorrect password")
     }
